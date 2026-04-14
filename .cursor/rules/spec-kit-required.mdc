@@ -1,0 +1,33 @@
+---
+description: All substantive work must follow GitHub Spec Kit before implementation
+alwaysApply: true
+---
+
+# Spec Kit — required workflow
+
+This repo uses [GitHub Spec Kit](https://github.com/github/spec-kit). **Do not jump straight to large or multi-file implementation** when the user is asking for a feature, refactor, or behavior change.
+
+## Mandatory sequence
+
+For any **non-trivial** change (new feature, refactor, API/contract change, multi-file work):
+
+1. **Ground rules** — Follow `.specify/memory/constitution.md` and existing specs.
+2. **Specify** — Treat the user’s request (or pasted requirements) as input to a **feature spec** under `specs/<feature-short-name>/`. If no spec exists yet, create or extend one before coding the bulk of the work.
+3. **Plan** — Produce or update a technical **plan** derived from that spec.
+4. **Tasks** — Break the plan into **actionable tasks** before implementation.
+5. **Implement** — Execute tasks against the codebase (e.g. `design-main/`), keeping spec + plan + tasks as the source of truth.
+
+Use the installed Cursor skills under `.cursor/skills/` (`speckit-specify`, `speckit-plan`, `speckit-tasks`, `speckit-implement`) as the canonical procedure. Optional steps when useful: `speckit-clarify` before plan, `speckit-checklist` after plan, `speckit-analyze` before implement.
+
+## When you may skip the full pipeline
+
+- **Trivial edits**: single-file typo, comment-only, or formatting-only changes that do **not** change behavior.
+- **User explicitly says** to only execute a narrow fix and a spec already exists that covers it — still align changes with that spec.
+
+## If the user asks you to “just build it”
+
+Acknowledge the request, then **still** run the specify → plan → tasks → implement flow (can be condensed in one session, but **artifacts**: spec, plan, tasks — must exist or be updated for that piece of work).
+
+## Imports
+
+When the user provides a PRD, ticket, or document, **ingest it in the specify phase** and reflect it in `specs/` rather than only summarizing in chat.

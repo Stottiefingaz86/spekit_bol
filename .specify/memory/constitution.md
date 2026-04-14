@@ -1,50 +1,45 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+# spekit_bol Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Spec-Driven Development (NON-NEGOTIABLE)
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+All feature work, refactors, and multi-file or behavior-changing development **must** follow the GitHub Spec Kit pipeline: **specify → plan → tasks → implement**, with artifacts under `specs/` and the Cursor rule `.cursor/rules/spec-kit-required.mdc`. Requirements may be written in chat or imported (PRD, tickets, markdown); they are captured in a feature spec before implementation proceeds.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+Optional steps when they reduce risk: clarify before plan; checklist after plan; analyze before implement.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+Trivial, single-file, non-behavior edits (typos, comments, formatting only) may skip a new spec when they do not affect product behavior.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### II. Quality and correctness
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+Implementations must match the approved spec and task list; drift requires updating the spec or plan first, then code.
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+### III. Stack and structure
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+The primary application lives under `design-main/`; respect its existing patterns, routing, and component governance rules in `design-main/.cursor/rules/`.
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+### IV. Safety and review
+
+Do not commit secrets; treat agent-local config under `.cursor/` as sensitive where credentials may appear.
+
+### V. Simplicity
+
+Prefer the smallest change that satisfies the spec; avoid scope creep without an updated spec.
+
+## Additional constraints
+
+Expand here as the product matures: performance budgets, accessibility bar, API contracts, etc.
+
+## Development workflow
+
+1. Use **speckit-constitution** / this file for governing principles.
+2. **speckit-specify** — requirements → `specs/<feature>/`.
+3. **speckit-plan** — technical plan from the spec.
+4. **speckit-tasks** — ordered, implementable tasks.
+5. **speckit-implement** — code changes in the repo.
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+This constitution and the Cursor rule `.cursor/rules/spec-kit-required.mdc` define how work is done. Changes to process require updating both together when the rule and constitution should stay aligned.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.0.0 | **Ratified**: 2026-04-14 | **Last Amended**: 2026-04-14
